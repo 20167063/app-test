@@ -1,0 +1,17 @@
+.popup-content{
+    text-align: center;
+    max-width: 333px;
+    border-radius: 5%;
+    background-color: #fff8dc;
+}
+img{
+    border-radius: 50%;
+}
+.title-name {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 900;
+}
+.infomation{
+    margin-top: 15px;
+}
