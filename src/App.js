@@ -24,6 +24,13 @@ function App() {
     setShow(false);
     setEdit(true);
   }
+  const editter = (newItem) => {
+    var index = newItem.id;
+    console.log(newItem);
+    const newData = [...data.slice(0,index-1),newItem,...data.slice(index)];
+    setData(newData);
+    setEdit(false);
+  }
   return (
     <div>
     <div>
@@ -31,8 +38,8 @@ function App() {
     </div>
     <div className="App">
     {show ? <Profile item={item} editProfile={editProfile}/> : <div></div>}
-      {edit ? <EditStudent /> : <div />}
-      <ListStudent data={data} showProfile={showProfile}/>
+      {edit ? <EditStudent item={item} editter={editter}/> : <ListStudent data={data} showProfile={showProfile}/>}
+      
     </div>
     </div>
   );

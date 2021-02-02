@@ -2,32 +2,69 @@ import React, {Component} from 'react';
 import './style.css'
 
 
-function EditStudent(props){
+class EditStudent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        
+        this.nameChange = this.nameChange.bind(this);
+        this.yearChange = this.yearChange.bind(this);
+        this.countryChange = this.countryChange.bind(this);
+        this.avtChange = this.avtChange.bind(this);
+    }
+    
+    nameChange(event) {
+        this.setState({ nameChanged: event.target.value });
+    }
+    yearChange(event) {
+        this.setState({ yearChanged: event.target.value });
+    }
+    countryChange(event) {
+        this.setState({ countryChanged: event.target.value });
+    }
+    avtChange(event) {
+        this.setState({ avtChanged: event.target.value });
+    }
+    render(){
+        const editdone = () => {
+            var newItem = {
+                id: item.id,
+                name: this.state.nameChanged,
+                year: this.state.yearChanged,
+                country: this.state.countryChanged,
+                avt: this.state.avtChanged                
+            }
+            const { editter } = this.props;
+            editter(newItem);
+        }
+        const {item} = this.props;
         return (
+            
             <div className="eddit">
-                <form>
+                <form >
                 <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Name</label>
-                <input type="text" className="form-control"  placeholder="Enter Name Student" />
+                <label >Name</label>
+                <input type="text" className="form-control" onChange={this.nameChange} placeholder={item.name} />
                 </div>
                 <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Year of Birth</label>
-                <input type="year" className="form-control" placeholder="Enter Year of Birth" />
+                <label >Year of Birth</label>
+                <input type="text" className="form-control" onChange={this.yearChange} placeholder={item.year} />
                 </div>
                 <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Country</label>
-                <input type="country" className="form-control"  placeholder="Enter Country of Student"/>
+                <label >Country</label>
+                <input type="text" className="form-control" onChange={this.countryChange} placeholder={item.country}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleFormControlFile1">Avatar</label>
-                    <input type="file" className="form-control-file" id="exampleFormControlFile1"/>
-                </div>
-                <div className="button-sub">
-                <button type="submit" className="btn btn-primary" >Submit</button>
+                    <input type="file" className="form-control-file" id="exampleFormControlFile1" onChange={this.avtChange} />
                 </div>
                 </form>
+                <div className="button-sub">
+                <button className="btn btn-primary" onClick={editdone}>Submit</button>
+                </div>
             </div>
         );
+    }
 }
 
 export default EditStudent;
