@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Nav from "./components/Nav";
 import ListStudent from "./components/ListStudent/ListStudent";
@@ -15,21 +14,21 @@ function App() {
 
   const showProfile = (item,idx) => {
     console.log(data);
+    // setShow(true);
+    setItem(item); 
     setShow(true);
-    setItem(item);
-    
   }
+  
   const editProfile = () => {
-    console.log("hello");
     setShow(false);
     setEdit(true);
   }
+  
   const editter = (newItem) => {
-    var index = newItem.id;
-    console.log(newItem);
-    const newData = [...data.slice(0,index-1),newItem,...data.slice(index)];
-    setData(newData);
-    setEdit(false);
+      var index = newItem.id;
+      const newData = [...data.slice(0,index-1),newItem,...data.slice(index)];
+      setData(newData);
+      setEdit(false);
   }
   return (
     <div>
@@ -37,7 +36,7 @@ function App() {
       <Nav />
     </div>
     <div className="App">
-    {show ? <Profile item={item} editProfile={editProfile}/> : <div></div>}
+    {show ? <Profile item={item} editProfile={editProfile} show={show}/> : <div></div>}
       {edit ? <EditStudent item={item} editter={editter}/> : <ListStudent data={data} showProfile={showProfile}/>}
       
     </div>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './style.css';
-import Data from "../../data/Data";
+
 
 function ListStudent(props) {
     const { data } = props;
@@ -11,7 +11,7 @@ const showProfile = (item,idx) => {
     showProfile(item, idx);
 }
           const list = data.filter((item)=>{
-              if(seachTerm == ""){
+              if(seachTerm === ""){
                   return item;
               } else if(item.name.toLowerCase().includes(seachTerm.toLowerCase()) || item.year.includes(seachTerm) || item.country.toLowerCase().includes(seachTerm.toLowerCase())){
                   return item
